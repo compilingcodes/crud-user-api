@@ -1,5 +1,6 @@
 const express= require('express')
 const { StatusCodes } = require('http-status-codes')
+const cors=require('cors')
 require('dotenv').config()
 
 
@@ -13,6 +14,7 @@ const app= express()
 //body parsrr config
 app.use(express.urlencoded({ extended:true }))
 app.use(express.json())
+app.use(cors())
 
 //index route
 app.get(`/`, (req,res) => {
