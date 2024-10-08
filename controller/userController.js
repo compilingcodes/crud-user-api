@@ -2,13 +2,14 @@ const { StatusCodes } = require("http-status-codes");
 const User = require("../model/userModel");
 
 let userController = {
+
   readAll: async (req, res) => {
     try {
       let data = await User.find({});
 
       res
         .status(StatusCodes.ACCEPTED)
-        .json({ status: true, length: data.length, users: data });
+        .json({ status: true, length: data.length , users: data });
     } catch (err) {
       res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
