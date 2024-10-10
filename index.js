@@ -11,15 +11,21 @@ const PORT= process.env.PORT
 
 const app= express()
 
+
+//view as static
+app.use(express.static('view'))
+
 //body parsrr config
 app.use(express.urlencoded({ extended:true }))
 app.use(express.json())
 app.use(cors())
 
 //index route
-app.get(`/`, (req,res) => {
-return res.status(StatusCodes.OK).json({ status: true, msg: `crud user api`})
-})
+// app.get(`/`, (req,res) => {
+// return res.status(StatusCodes.OK).json({ status: true, msg: `crud user api`})
+// })
+
+app.use('/', require('./route/templateRoute'))
 
 //api route
 app.use(`/api/user`, require(`./route/userRoute`))
